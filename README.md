@@ -1,4 +1,7 @@
-# Home Assistant Musl Wheels builder
+# MCOS musl wheels builder
+
+Builds **musllinux**-tagged wheels for **MCOS** stack images (Alpine/musl).  
+Upstream lineage: Home Assistant wheels builder (Apache-2.0); see **NOTICE**.
 
 https://peps.python.org/pep-0656/
 
@@ -17,7 +20,7 @@ Compile utilities:
 ### Python 3.13 / musllinux_1_2
 
 Build with Alpine 3.22
-Images: ghcr.io/home-assistant/wheels/ARCH/musllinux_1_2/cp313:VERSION
+Images: ghcr.io/muthur-command/wheels/ARCH/musllinux_1_2/cp313:VERSION
 
 Version of system builds:
 
@@ -30,7 +33,7 @@ Version of system builds:
 ### Python 3.14 / musllinux_1_2
 
 Build with Alpine 3.22
-Images: ghcr.io/home-assistant/wheels/ARCH/musllinux_1_2/cp314:VERSION
+Images: ghcr.io/muthur-command/wheels/ARCH/musllinux_1_2/cp314:VERSION
 
 Version of system builds:
 
@@ -45,7 +48,7 @@ Version of system builds:
 ```sh
 
 $ python3 -m builder \
-    --index https://wheels.home-assistant.io \
+    --index https://wheels.muthur-command.com \
     --requirement requirements_all.txt \
     --upload rsync \
     --remote user@server:/wheels

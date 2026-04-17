@@ -6,11 +6,11 @@ build-backend = "setuptools.build_meta"
 name    = "builder"
 version = "2.1.0"
 license = {text = "Apache-2.0"}
-description = "Home Assistant Python wheels builder."
+description = "MCOS musl Python wheels builder (Alpine-compatible)."
 authors = [
-    {name = "The Home Assistant Authors", email = "hello@home-assistant.io"}
+    {name = "The MCOS Authors", email = "hello@muthur-command.com"}
 ]
-keywords = ["docker", "home-assistant"]
+keywords = ["docker", "muthur-command"]
 classifiers = [
     "Intended Audience :: Developers",
     "Operating System :: POSIX :: Linux",
@@ -19,7 +19,7 @@ classifiers = [
 ]
 
 [project.urls]
-"Homepage" = "https://home-assistant.io/"
+"Homepage" = "https://www.muthur-command.com/"
 
 [tool.setuptools.packages.find]
 include = ["builder*"]

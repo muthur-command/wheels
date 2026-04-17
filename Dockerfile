@@ -4,7 +4,7 @@ FROM ${BUILD_FROM}
 ARG \
     BUILD_ARCH \
     CPYTHON_ABI \
-    PIP_EXTRA_INDEX_URL=https://wheels.home-assistant.io/musllinux-index/
+    PIP_EXTRA_INDEX_URL=http://wheels.muthur-command.com/musllinux-index/
 
 SHELL ["/bin/bash", "-exo", "pipefail", "-c"]
 

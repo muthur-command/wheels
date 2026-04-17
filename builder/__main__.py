@@ -1,4 +1,4 @@
-"""Hass.io Builder main application."""
+"""MCOS wheels builder CLI."""
 
 from __future__ import annotations
 
@@ -38,19 +38,20 @@ from builder.wheel import (
 )
 
 _DEFAULT_SKIP_BINARY = ":none:"
-# Override skip binary per index url
+# Override skip binary per index URL (legacy HA index + P0 muthur-command index).
+_SKIP_BINARY_FOR_KNOWN_INDEX = [
+    "aiohttp",
+    "charset-normalizer",
+    "grpcio",
+    "multidict",
+    "propcache",
+    "protobuf",
+    "pymicro-vad",
+    "SQLAlchemy",
+    "yarl",
+]
 _OVERRIDE_SKIP_BINARY = {
-    "https://wheels.home-assistant.io": [
-        "aiohttp",
-        "charset-normalizer",
-        "grpcio",
-        "multidict",
-        "propcache",
-        "protobuf",
-        "pymicro-vad",
-        "SQLAlchemy",
-        "yarl",
-    ],
+    "http://wheels.muthur-command.com": _SKIP_BINARY_FOR_KNOWN_INDEX,
 }
 
 
@@ -139,7 +140,7 @@ def builder(  # noqa: C901, PLR0913, PLR0912, PLR0915
     remote: str,
     timeout: int,
 ) -> None:
-    """Build wheels precompiled for Home Assistant container."""
+    """Build wheels precompiled for MCOS Alpine/musl container images."""
     check_url(index)
     if (override := _OVERRIDE_SKIP_BINARY.get(index)) is not None:
         if skip_binary != _DEFAULT_SKIP_BINARY:

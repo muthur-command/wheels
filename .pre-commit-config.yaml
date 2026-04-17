@@ -16,10 +16,19 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
     hooks:
-      - id: check-executables-have-shebangs
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+        args: [--fix=lf]
+      - id: check-toml
+      - id: check-yaml
+        exclude: ^\.github/workflows/
       - id: check-merge-conflict
+      - id: check-added-large-files
+        args: ["--maxkb=512"]
+      - id: check-executables-have-shebangs
       - id: no-commit-to-branch
-        args: [--branch, master]
+        args: [--branch, mc]
   - repo: https://github.com/rbubley/mirrors-prettier
     rev: v3.6.2
     hooks:

@@ -5,10 +5,10 @@ on:
     types: [published]
   push:
     branches:
-      - master
+      - mc
   pull_request:
     branches:
-      - master
+      - mc
 
 jobs:
   publish:
@@ -39,10 +39,10 @@ jobs:
       - shell: bash
         id: info
         run: |
-          name="ghcr.io/home-assistant/wheels/${{ matrix.arch }}/${{ matrix.tag }}/${{ matrix.abi }}"
+          name="ghcr.io/muthur-command/wheels/${{ matrix.arch }}/${{ matrix.tag }}/${{ matrix.abi }}"
 
           version=$(echo "${{ github.ref }}" | awk -F"/" '{print $NF}' )
-          if [ "${version}" = "master" ]; then
+          if [ "${version}" = "mc" ]; then
             version=dev
           fi
 
@@ -65,7 +65,7 @@ jobs:
           platforms: ${{ matrix.platform }}
           cache-from: type=registry,ref=${{ steps.info.outputs.name }}:dev
           build-args: |
-            BUILD_FROM=ghcr.io/home-assistant/${{ matrix.arch }}-base-python:${{ matrix.base }}
+            BUILD_FROM=ghcr.io/muthur-command/${{ matrix.arch }}-base-python:${{ matrix.base }}
             BUILD_ARCH=${{ matrix.arch }}
             CPYTHON_ABI=${{ matrix.abi }}
           tags: |

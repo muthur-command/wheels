@@ -1,0 +1,11 @@
+MCOS / muthur-command fork notice
+==================================
+
+This repository contains software derived from the Home Assistant wheels
+builder project. The upstream project remains available under the Apache
+License, Version 2.0; see LICENSE.
+
+MCOS-specific naming (product strings, container registry paths, and
+documentation URLs) reflects the fork maintained under the muthur-command
+organization, as described in the MCOS migration specification (P0) in the
+mc_os documentation tree.
