@@ -94,9 +94,20 @@ runs:
     - shell: bash
       id: pull
       run: |
+        set -euo pipefail
         name="ghcr.io/muthur-command/wheels/${{ inputs.arch }}/${{ inputs.tag }}/${{ inputs.abi }}:${{ steps.version.outputs.version }}"
+        set +e
         docker pull "$name"
-        echo "name=$name" >> $GITHUB_OUTPUT
+        pull_rc=$?
+        set -e
+        if [ "$pull_rc" -ne 0 ]; then
+          echo "::notice::docker pull failed (exit ${pull_rc}); checking for a pre-built local tag"
+          docker image inspect "$name" >/dev/null 2>&1 || {
+            echo "::error::Image not on GHCR and not present locally: ${name}"
+            exit 1
+          }
+        fi
+        echo "name=$name" >> "$GITHUB_OUTPUT"
 
     - shell: bash
       id: options

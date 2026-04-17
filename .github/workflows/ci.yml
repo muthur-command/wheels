@@ -91,6 +91,24 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Build wheels builder image for CI
+        shell: bash
+        run: |
+          set -euxo pipefail
+          case "${{ matrix.abi }}" in
+            cp313) base="3.13-alpine3.22" ;;
+            cp314) base="3.14-alpine3.22" ;;
+            *) echo "Unsupported ABI: ${{ matrix.abi }}" >&2; exit 1 ;;
+          esac
+          img="ghcr.io/muthur-command/wheels/${{ matrix.arch }}/${{ matrix.tag }}/${{ matrix.abi }}:dev"
+          docker build \
+            --build-arg "BUILD_FROM=ghcr.io/muthur-command/${{ matrix.arch }}-base-python:${base}" \
+            --build-arg "BUILD_ARCH=${{ matrix.arch }}" \
+            --build-arg "CPYTHON_ABI=${{ matrix.abi }}" \
+            -t "$img" \
+            .
+          echo "Built $img"
+
       - name: Write env-file
         shell: bash
         run: |
@@ -127,6 +145,18 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build wheels builder image for CI
+        shell: bash
+        run: |
+          set -euxo pipefail
+          img="ghcr.io/muthur-command/wheels/amd64/musllinux_1_2/cp314:dev"
+          docker build \
+            --build-arg BUILD_FROM=ghcr.io/muthur-command/amd64-base-python:3.14-alpine3.22 \
+            --build-arg BUILD_ARCH=amd64 \
+            --build-arg CPYTHON_ABI=cp314 \
+            -t "$img" \
+            .
 
       - name: Write env-file
         shell: bash
