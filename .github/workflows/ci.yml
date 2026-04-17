@@ -65,6 +65,9 @@ jobs:
 
   test:
     name: Test wheels ${{ matrix.arch }}-${{ matrix.abi }}-${{ matrix.tag }}
+    permissions:
+      contents: read
+      packages: read
     runs-on: ${{ matrix.runs-on }}
     strategy:
       fail-fast: false
@@ -80,6 +83,13 @@ jobs:
     steps:
       - name: Check out code from GitHub
         uses: actions/checkout@v6.0.2
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@4907a6ddec9925e35a0a9e82d7399ccc52663121 # v4.1.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Write env-file
         shell: bash
@@ -103,10 +113,20 @@ jobs:
   test_local_repo:
     name: Test publishing to a local repository
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
 
     steps:
       - name: Check out code from GitHub
         uses: actions/checkout@v6.0.2
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@4907a6ddec9925e35a0a9e82d7399ccc52663121 # v4.1.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Write env-file
         shell: bash
