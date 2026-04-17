@@ -13,6 +13,9 @@ on:
 jobs:
   publish:
     name: Publish builder
+    permissions:
+      contents: read
+      packages: write
     runs-on: ${{ matrix.runs-on }}
     strategy:
       fail-fast: False

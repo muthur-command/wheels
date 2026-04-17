@@ -1,4 +1,5 @@
-ARG BUILD_FROM
+# Default only for static analysis / local `docker build` without --build-arg; CI passes BUILD_FROM explicitly.
+ARG BUILD_FROM=ghcr.io/muthur-command/amd64-base-python:3.14-alpine3.22
 FROM ${BUILD_FROM}
 
 ARG \
