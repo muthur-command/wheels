@@ -1,6 +1,6 @@
 # MCOS musl wheels builder
 
-Builds **musllinux**-tagged wheels for **MCOS** stack images (Alpine/musl).  
+Builds **musllinux**-tagged wheels for **MCOS** stack images (Alpine/musl).
 Upstream lineage: Home Assistant wheels builder (Apache-2.0); see **NOTICE**.
 
 https://peps.python.org/pep-0656/
