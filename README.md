@@ -1,7 +1,8 @@
-# MCOS musl wheels builder
+# wheels
 
-Builds **musllinux**-tagged wheels for **MCOS** stack images (Alpine/musl).
-Upstream lineage: Home Assistant wheels builder (Apache-2.0); see **NOTICE**.
+中文文档: [`README.zh-CN.md`](./README.zh-CN.md)
+
+Builds **musllinux**-tagged Python wheels for **Muthur Command OS** stack images (Alpine / musl). Used by CI and the composite **`action.yml`** entrypoint.
 
 https://peps.python.org/pep-0656/
 
@@ -46,7 +47,6 @@ Version of system builds:
 ## Misc
 
 ```sh
-
 $ python3 -m builder \
     --index https://wheels.muthur-command.com \
     --requirement requirements_all.txt \
@@ -58,6 +58,12 @@ $ python3 -m builder \
 
 - rsync
 
-## Folder structure of index folder:
+## Folder structure of index folder
 
 `/musllinux/*`
+
+## Origin
+
+- **Upstream:** [home-assistant/wheels](https://github.com/home-assistant/wheels) — Home Assistant musl wheels builder, from which this tree was ported.
+- **In this repo:** **Muthur Command** keeps this fork for **Muthur Command OS** CI and wheel indexes; behavior may diverge from upstream over time.
+- **License:** Code inherited from upstream remains **Apache-2.0**; see [`LICENSE`](./LICENSE) and [`NOTICE`](./NOTICE).

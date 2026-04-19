@@ -1,5 +1,6 @@
-name: "MCOS musl wheels builder"
-description: "Builds and publishes Python wheels for MCOS Alpine/musl images"
+name: "Muthur Command OS musl wheels builder"
+description: >-
+  Builds and publishes Python wheels for Muthur Command OS Alpine/musl images
 inputs:
   tag:
     description: "The musllinux tag for the builder that should be used"

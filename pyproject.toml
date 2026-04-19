@@ -6,9 +6,9 @@ build-backend = "setuptools.build_meta"
 name    = "builder"
 version = "2.1.0"
 license = {text = "Apache-2.0"}
-description = "MCOS musl Python wheels builder (Alpine-compatible)."
+description = "Muthur Command OS musl Python wheels builder (Alpine-compatible)."
 authors = [
-    {name = "The MCOS Authors", email = "hello@muthur-command.com"}
+    {name = "The Muthur Command Authors", email = "morty@muthur-command.com"}
 ]
 keywords = ["docker", "muthur-command"]
 classifiers = [
