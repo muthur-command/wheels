@@ -18,7 +18,8 @@
 
 ### Python 3.13 / musllinux_1_2
 
-基于 Alpine 3.22 构建  
+基于 Alpine 3.22 构建。
+
 镜像：`ghcr.io/muthur-command/wheels/ARCH/musllinux_1_2/cp313:VERSION`
 
 系统构建版本：
@@ -31,7 +32,8 @@
 
 ### Python 3.14 / musllinux_1_2
 
-基于 Alpine 3.22 构建  
+基于 Alpine 3.22 构建。
+
 镜像：`ghcr.io/muthur-command/wheels/ARCH/musllinux_1_2/cp314:VERSION`
 
 系统构建版本：
