@@ -61,7 +61,7 @@ inputs:
     default: "wheels"
   wheels-index:
     description: "The wheels index URL"
-    default: "http://wheels.muthur-command.com"
+    default: "https://wheels.muthur-command.com"
   local-wheels-repo-path:
     description: "Path to a local folder to copy the repository to (wheels-host and wheels-user must be empty)"
     default: ""

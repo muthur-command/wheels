@@ -52,7 +52,6 @@ _SKIP_BINARY_FOR_KNOWN_INDEX = [
 ]
 _OVERRIDE_SKIP_BINARY = {
     "https://wheels.muthur-command.com": _SKIP_BINARY_FOR_KNOWN_INDEX,
-    "http://wheels.muthur-command.com": _SKIP_BINARY_FOR_KNOWN_INDEX,
 }
 
 
